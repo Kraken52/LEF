@@ -1,0 +1,14 @@
+{
+  "name": "EnK",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^4.2.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^13.1.1"
+  }
+}
