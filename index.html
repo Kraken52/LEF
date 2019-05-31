@@ -5,6 +5,9 @@
     <title>PROJECT NEWS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+      .learnJim{
+        border: #1d1924;
+      }
 
       input{
         border-radius: 5px;
@@ -13,6 +16,7 @@
         outline:none;
       }
       body{
+        cursor: pointer;
         margin: 0px;
         padding: 0px;
         background: #1d1924;
@@ -21,6 +25,7 @@
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
+        user-select:none;
       }
       button{
         margin: 10px;
@@ -54,7 +59,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow-y: scroll;
+        overflow-y: hidden;
       }
       #author{
         border-top: solid 2px #ff7f00;
@@ -74,7 +79,7 @@
         height: 100%;
         text-align: center;
       }
-      p{
+      .menuButton{
         background: #ffc994;
         color:#ff8103;
         height: 35px;
@@ -86,7 +91,7 @@
         transition: .4s ease-out;
         transition-delay: 0.4s;
       }
-      p:hover{
+      .menuButton:hover{
         color:#fff;
         background: #5e12b0;
       }
@@ -109,30 +114,406 @@
       .blockInRow:hover{
         background: rgba(19, 232, 132, 0.4);
       }
+      
+   .stroka{
+    padding: 3px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid white; /* Параметры рамки */
+    border-radius: 2px 
+    }
+    table{
+      text-align: center;
+    }
+    .next{
+      height: 40px;
+      width: 100px;
+      border: solid 2px #34EA4A;
+      border-radius: 5px;
+      background: #34EAB2;
+    }
+    .block{
+      padding:10%;display: block;
+    }
+    .directory{
+      
+      text-align: left;
+      
+      background: black;
+      color:#fff;
+      padding: 10px 20px;
+      margin: 10px;
+      display: flex;
+      border-radius:5px;
+      transition: .4s ease-out;
+      transition-delay: 0.4s;
+    }
+    .welcome{
+      height: 100%;
+      margin-top:-100px;
+      width: 100%;
+      overflow-y: scroll;
+      display: block
+    }
+    .list{
+      height: 200px;
+      padding:25% 0;
+      width: 100%;
+      overflow-y: scroll;
+      display: block
+    }
+    .directory:hover{
+      background: #5e12b0;
+    }
+    .directory .en{
+     padding: 10px;
+    }
+    .directory .ru{
+      padding: 10px;
+    }
+    .learn{
+      display: block;
+      height: 200px;
+      padding:25% 0;
+      width: 100%;
+      overflow-y: scroll;
+      
+    }
+    .learnBlock{
+      float:left;
+      text-align: center;
+      background: black;
+      padding: 75px 60px 45px 60px;
+      margin: 50px;
+      width: 60px;
+      height: 60px;
+      border-radius: 90px;
+      font-size: 12pt;
+      transition: .4s ease-out;
+      transition-delay: 0.4s;
+      color:#fff;
+      box-shadow: 0px 0px 60px rgba(10,250,0,1);
+      
+    }
+    
+    .learnBlock:hover{
+      background: #5e12b0;
+      box-shadow: 0px 50px 0px rgba(0,0,0,0.5);
+    
+    }
+    .learnBlock:active{
+      background: #ff7f00;
+    }
+
+    .profile{
+      transition: .4s ease-out;
+      transition-delay: 0.4s;
+      color:#5e12b0;
+      margin: 40px;
+      padding: 50px 60px 50px 60px;
+      background: #f2f6f8; /* Цвет фона */
+      border: 1px solid #7a7b7e; /* Параметры рамки */
+      width: 120px; /* Ширина кнопки */
+      height: 120px; /* Высота */
+      border-radius: 160px;
+      box-shadow: 0px 0px 60px rgba(0,0,0,1);
+    }
+    .profile:hover{
+      text-shadow: 2px 2px 0px rgba(0,0,100,0.3);; 
+      box-shadow: 0px 0px 60px rgba(200,200,200,1);
+    }
     </style>
   </head>
   <body>
     <div id="menu">
-        <p>Главаня</p>
-        <p>Учить</p>
-        <p>Провести зачет</p>
-        <p>Cправочник слов</p>
-        <p>Cправочник фраз</p>
-        <p>Добавить слова</p>
-        <p>Добавить фразы</p>
-        <p>Удалить слово</p>
-        <p>Удалить фразу</p>
+        <p class='menuButton'>Главаня</p>
+        <p class='menuButton'>Уроки</p>
+        <p class='menuButton'>Квесты</p>
+        <p class='menuButton'>Cправочник слов</p>
     </div>
-
+    
     <div id="main">
-
+      
     </div>
 
     <div id="author">
         <h3>Author KRAKEN</h3>
     </div>
-    <script>
-      require("./index.js");
-    </script>
+    <script> 
+        
+        //****СЛОВА***/
+        let words = new Object();                       // 400 слов
+        words.noun = [
+            ["Time","Время"],["Year","Год"],["People","Люди"],["Way","Путь"],["Way","Способ"],["Day","День"],["Man","Мужчина"],["Man","Человек"],
+            ["Thing","Вещь"],["Woman","Женщина"],["Life","Жизнь"],["Child","Ребенок"],["World","Мир"],["School","Школа"],["State","Состояние"],["State","Штат"],
+            ["Family","Семья"],["Student","Ученик"],["Student","Студент"],["Group","Группа"],["Country","Страна"],["Problem","Проблема"],["Hand","Рука"],["Part","Часть"],
+            ["Place","Место"],["Case","Ситуация"],["Case","Случай"],["Week","Неделя"],["Company","Компания"],["System","Система"],["Program","Программа"],["Question","Вопрос"],
+            ["Work","Работа"],["Government","Правительство"],["Number","Номер"],["Night","Ночь"],["Point","Точка"],["Home","Дом"],["Water","Вода"],["Room","Комнта"],["Mother","Мать"],
+            ["Area","Облясть"],["Area","Территория"],["Money","Деньги"],["Story","Рассказ"],["Story","История"],["Fact","Факт"],["Month","Месяц"],["Lot","Партия"],["Right","Право"],
+            ["Study","Исследование"],["Study","Учеба"],["Book","Книга"],["Eye","Глаз"],["Job","Работа"],["Word","Слово"],["Business","Бизнес"],["Issue","Дело"], ["Issue","Случай"],
+            ["Issue","Выпуск"],["Side","Сторона"],["Kind","Вид"],["Kind","Класс"],["Head","Голова"],["House","Гостиница"],["Service","Услуга"],["Friend","Друг"],["Father","Отец"],
+            ["Power","Власть"],["Power","Мощь"],["Hour","Час"],["Game","Игра"],["Line","Линия"],["End","Конец"],["Member","Член"],["Law","Закон"],["Car","Автомобиль"],["City","Город"],
+            ["Community","Община"],["Name","Имя"],["President","Президент"],["Team","Команда"],["Minute","Минута"],["Idea","Идея"],["Kid","Ребенок"],["Body","Тело"],["Information","Информация"],
+            ["Back","Спина"],["Parent","Родитель"],["Face","Лицо"],["Other","Другие"],["Level","Уровень"],["Office","Офис"],["Door","Дверь"],["Health","Здоровье"],["Person","Человек"],
+            ["Art","Искусство"],["War","Война"],["History","История"],["Party","Вучеринка"],["Result","Результат"],["Change","Замена"],["Morning","Утро"],["Reason","Причина"],["Research","Исслкдование"]
+            ["Girl","Девочка"],["Girl","Девушка"],["Moment","Мгновение"],["Guy","Парень"],["Moment","Момент"],["Air","Воздух"],["Teacher","Учитель"],["Force","Сила"],["Education","Образование"]
+        ];                                              // Существительные
+        words.verb=[
+          ["Be","Быть"],["Have","Иметь"],["Do","Делать"],["Say","Говорить"],["Go","Идти"],["Can","Мочь"],["Get","Получать"],["Would","было бы"],["Make","Делать"],["Know","Знать"],
+          ["Will","Хотеть"],["Think","Думать"],["Take","Брать"],["See","Видеть"],["Come","Приходить"],["Could","Мог"],["Want","Хотеть"],["Look","Смотреть"],["Use","Использовать"],["Find","Находить"],
+          ["Give","Давать"],["Tell","Говорить"],["Work","Работать"],["May","Может"],["Should","Должен"],["Call","Звонить"],["Call","Звать"],["Try","Пробывать"],["Ask","Спрашивать"],["Need","Нуждаться"],
+          ["Feel","Чувствовать"],["Become","Становиться"],["Leave","Покидать"],["Put","Класть"],["Mean","Значить"],["Keep","Хранить"],["Keep","Удерживать"],["Let","Позволять"],["Begin","Начинать"],
+          ["Seem","Казаться"],["Help","Помогать"],["Talk","Разговаривать"],["Turn","Поворачивать"],["Start","Начинать"],["Might","Может быть"],["Show","Показывать"],["Hear","Слышать"],["Play","Игать"],
+          ["Run","Бежать"],["Move","Двигать"],["Like","Нравиться"],["Live","Жить"],["Believe","Верить"],["Believe","Считать"],["Hold","Держать"],["Bring","Нести"],["Happen","Случаться"],["Must","Должен"],
+          ["Write","Писать"],["Provide","Обеспечивать"],["Provide","Предоставлять"],["Sit","Сидеть"],["Stand","Стоять"],["Lose","Терять"],["Pay","Платить"],["Meet","Встречать"],["Include","Включать"],
+          ["Continue","Продолжать"],["Set","Устанавливать"],["Learn","Изучать"],["Change","Изменять"],["Lead","Водить"],["Understand","Понимать"],["Watch","Смотреть"],["Follow","Следовать"],
+          ["Stop","Останавливать"],["Create","Творить"],["Create","Создавать"],["Speak","Говорить"],["Read","Читать"],["Allow","Позволять"],["Add","Добавлять"],["Spend","Проводить"],["Spend","Тратить"],
+          ["Grow","Расти"],["Open","Открывать"],["Walk","Ходить"],["Win","Побеждать"],["Offer","Предлагать"],["Remember","Помнить"],["Love","Любить"],["Consider","Считать"],["Appear","Появляться"],
+          ["Buy","Покупать"],["Wait","Ждать"],["Serve","Служить"],["Die","Умирать"],["Send","Отправлять"],["Expect","Ожидать"],["Build","Строить"],["Stay","Оставаться"],["Fall","Падать"],
+          ["Cut","Резать"],["Reach","Достигать"],["Kill","Убивать"],["Remain","Сохранять"]
+        
+        ];                                              // Глагол
+        words.use =[
+        ["The","Артикуль"],["Be","Быть"],["To","К"],["Of","В, из-за, о"],["And","И"],["A","Неопределенный артикуль"],["In","В"],["That","Что, который"],["Have","Иметь"],["I","Я"],["It","Он, оно, это"],["For","Для"],
+        ["Not","Не"],["On","На"],["With","С"],["He","Он"],["As","Как, поскольку"],["You","Ты, вы"],["Do","Делать"],["At","у, около, на"],["This","Этот"],["But","Но"],["His","Его"],["By","у, под, силами чего-либо"],
+        ["From","От"],["They","Они"],["We","Мы"],["Say","Говорить"],["Her","Ее"],["She","Она"],["Or","Или"],["An","Неопределенный артикуль"],["Will","Проявлять волю, хотеть"],["My","Мой"],["One","Один"],["All","Все"],
+        ["Would","Модальный глагол, выражающий желание, вероятность"],["There","Там"],["Their","Их"],["What","Что"],["So","Так"],["Up","Вверх"],["Out","Наружу"],["If","Если"],["About","О"],["Who","Кто"],["Get","Получать"],
+        ["Which","Который"],["Go","Идти"],["Me","Я, мне, меня"],["When","Когда"],["Make","Делать"],["Can","Мочь"],["Like","Нравиться"],["Time","Время"],["No","Нет"],["Just","Правильный, точно"],["Him","Ему"],
+        ["Know","Знать"],["Take","Брать"],["People","Люди"],["Into","в(внутрь)"],["Year","Год"],["Your","Твой, ваш"],["Good","Хороший"],["Some","Некоторый, какой-то"],["Could","неправильная форма глагола CAN"],
+        ["Them","Им"],["See","Видеть"],["Other","Дргуой"],["Than","Чем"],["Then","Затем"],["Now","Сейчас"],["Look","Смотреть"],["Only","Только"],["Come","Приходить"],["Its","Его"],["Over","Над"],["Think","Думать"],
+        ["Also","Также"],["Back","Назад"],["After","После"],["Use","Использовать"],["Two","Два"],["How","Как"],["Our","Наш"],["Work","Работать"],["First","Первый"],["Well","Хорошо"],["Way","Путь, способ"],
+        ["Even","Даже"],["New","Новый"],["Because","Потому что"],["Any","Любой"],["These","Эти"],["Give","Давать"],["Day","День"],["Most","Большинство"],["Us","Нас"]
+        ];                           // Часто используемых
+        words.adjective=[
+          ["Other","Иной"],["New","Новый"],["Good","Хороший"],["High","Высокий"],["Old","Старый"],["Great","Велийкий"],["Big","Большой"],["American","Американский"],["Small","Маленький"],["Large","Большой"],
+          ["National","Национальный"],["Young","Молодой"],["Different","Различный"],["Black","Черный"],["Long","Длинный"],["Little","Маленький"],["Important","Важный"],["Political","Политический"],["Bad","Плохой"],
+          ["White","Белый"],["Real","Настоящий"],["Best","Лучший"],["Right","Правильный"],["Social","Социальный"],["Only","Единственный"],["Public","Публичный"],["Sure","Уверенный"],["Low","Низкий"],["Early","Ранний"],
+          ["Able","Компетентный"],["Human","Человечный"],["Local","Местный"],["Late","Поздний"],["Hard","Жесткий"],["Major","Основной"],["Better","Лучший"],["Economic","Экономичный"],["Strong","Сильный"],
+          ["Possible","Возможный"],["Whole","Целый"],["Free","Свободный"],["Military","Военный"],["True","Верный"],["Federal","Федеральный"],["International","Международный"],["Full","Полный"],["Special","Особый"],
+          ["Easy","Легкий"],["Clear","Понятный, прозрачный"],["Recent","Недавний"],["Certain","Определенный"],["Personal","Личный"],["Open","Открытый"],["Red","Красный"],["Difficult","Сложный"],["Available","Доступный"],
+          ["Likely","Вероятный"],["Short","Короткий"],["Single","Одинокий"],["Medical","Медицинский"],["Current","Текущий"],["Wrong","Неверный"],["Private","Личный"],["Past","Прошлый"],["Foreign","Иностранный"],
+          ["Fine","Хороший"],["Common","Общий"],["Poor","Бедный"],["Natural","Естественный"],["Significant","Существенный"],["Similar","Похожий"],["Hot","Горячий"],["Dead","Мертвый"],["Central","Центральный"],
+          ["Happy","Счастливый"],["Serious","Серьезный"],["Ready","Готовый"],["Simple","Простой"],["Left","Левый"],["Physical","Физический"],["General","Общий"],["Environmental","Отсносящийся к окружающей среде"],
+          ["Financial","Финансовый"],["Blue","Синий"],["Democratic","Демократичный"],["Dark","Темный"],["Various","Различный"],["Entire","Целый"],["Close","Близкий"],["Legal","Легальный"],["Religious","Религиозный"],
+          ["Cold","Холодный"],["Final","Конечный"],["Main","Главный"],["Green","Зеленый"],["Nice","Милый, хороший"],["Huge","Огромный"],["Popular","Известный, популярный"],["Traditional","Традиционный"],["Cultural","Культурный"]
+          ];
+
+        words.mesto=[['I','Я'],['You','Вы'],['He','Он'],['She','Она'],['It','Оно'],['We','Мы'],['They','Они']];
+        
+
+        //////////////////////////////
+        let learnLvl = [];//Уроки
+        learnLvl[0]="<div id = 'start' class='block welcome'><br><br><br><br><h1>Добро пожаловать в LEF</h1> <h3>Это моя дипломная работа</h3><br><span>Немного о проекте...В 2018 году у меня появилось желание изучить Английский язык. В течение всего времени я изучал иностранный язык используя разные методики. Спустя время я отобрал методики, которые мне показались самыми эффективными и выстроил их в хронологическом порядке и делая опор на высказывание \"Все познается на практике\". Это означает, что теория будет вся, но очень сжата и структурирована, а по большей части упор будет на практические задания. </span><hr><span>На четвертом курсе 2018 года я все же решился взять тему дипломной работы \"Разработка ПО на фреймворке Electron\". У каждого ПО есть предназначение, выполнение той цели для которой он был разработан, и так получилось, что я решил создать тренажер Английского языка. Почему я решил создать именно тренажер? Потому - что я объединил все свои цели в один огромный проект, который преследовал мои цели, такие как:<ol><li>Сделать дипломную работу</li><li>Разработать ПО</li><li>Изучить иностранный язык</li><li>Создать первый проект для портфолио</li><li>Разобраться с такими технологиями как NODE.js и фреймворкам Electron</li></ol></span></div>";
+        learnLvl[1]="<table><tr><td ></td><td class='stroka'>ВОПРОС</td><td class='stroka'>УТВЕРЖДЕНИЕ</td><td class='stroka'>ОТРИЦАНИЕ</td></tr><tr><td class='stroka'>БУДУЩИЕ</td><td class='stroka'><table><tr ><td>Will</td><td>I<br>you<br>we<br>they<br>he<br></td><td>love?</td></tr></table></td><td class='stroka'><table><tr><td>I<br>You<br>We<br>They<br>He<br>She<br></td><td>will love</td></tr></table></td><td class='stroka'><table><tr><td>I<br>You<br>We<br>They<br>He<br>She<br></td><td>will not love</td></tr></table></td></tr><tr><td class='stroka'>НАСТОЯЩИЕ</td><td class='stroka'><table><tr><td>Do</td><td>I <br>you <br>we <br>they <br></td><td>love?</td></tr><tr><td><hr></td><td><hr></td><td><hr></td></tr><tr><td>Does</td><td>he <br>she <br></td><td>love?</td></tr></table></td><td class='stroka'><table><tr><td>I <br>You <br>We <br>They <br></td><td></td><td>love</td></tr><tr><td><hr></td><td><hr width='30px'></td><td><hr></td></tr><tr><td>He <br>She <br></td><td></td><td>love<b>s</b></td></tr></table></td><td class='stroka'><table><tr><td>I <br>You <br>We  <br>They <br></td><td>don't love</td></tr><tr><td><hr></td><td><hr></td><td><hr width='30px'></td></tr><tr><td>He <br>She <br></td><td>doesn't love</td></tr></table></td></tr><tr><td class='stroka'>Прошедшее</td><td class='stroka'><table><tr><td>Did</td><td>I <br>you <br>we <br>they  <br>he <br>she <br></td><td>love?</td></tr></table></td><td class='stroka'><table><tr><td>I <br>You <br>We <br>They <br>He <br>She <br></td><td>love<b>d</b><br><a onclick='nfl()'>(нфг)</a></td></tr></table></td><td class='stroka'><table><tr><td>I <br>You <br>We <br>They <br>He <br>She <br></td><td>did not love</td></tr></table></td></tr></table>";
+        function nfl(){
+          alert("Неправильная форма глагола");
+        }
+        //***Стандартные стили***//
+        let lvlNum=0;
+        let mainStart = document.getElementById("main").innerHTML; 
+        let main = document.getElementById("main");
+        let mainStyle = document.getElementById("main").style;
+        
+        //***BUTTON***/
+        function appendButton(node){  
+          let button = document.createElement('button');
+          button.className = 'next';
+          button.onclick=()=>{
+                                    main.style.display = "flex";
+                                    main.innerHTML="";  
+                                    title[1].onclick();
+                                    lvlNum++;
+                                  };
+          button.innerHTML = '<strong>N E X T</strong>';
+          node.appendChild(button);
+        } 
+
+        ///START SCRIPTS
+        (()=>{
+          main.innerHTML=learnLvl[0];
+          appendButton(document.getElementById('start'));
+          window.sessionStorage.lvl = "0";
+          window.sessionStorage.exp = "0";
+          window.sessionStorage.nextExp = "15";
+          
+        })();
+          
+        //***Профиль***/
+        function profile(){
+          let node = document.getElementById('main');
+          let exp = window.sessionStorage.exp;
+          let nextExp = window.sessionStorage.nextExp;
+          let lvl = window.sessionStorage.lvl;            // Уровень прокачки
+          let title = document.createElement("div");      // Меню(Массив)
+          title.className='profile';
+          title.innerHTML ="<h1>LVL:"+lvl+"</h1><h2>EXP:"+exp+'/'+nextExp+'</h2>';
+          node.appendChild(title);
+        }
+        let title = document.getElementsByClassName('menuButton');
+        //Главаня
+        title[0].onclick=()=>{
+          main.innerHTML= learnLvl[0];
+          appendButton(document.getElementById('start'));
+          
+        }
+        /////УРОКИ
+        title[1].onclick=()=>{
+          main.innerHTML="";
+          profile();
+          let block = document.createElement('div');
+          main.appendChild(block);
+          block.className='learn';
+          for(i=0;i<10;i++){
+            let numBlock = document.createElement('div');
+            numBlock.className='learnBlock';
+            numBlock.innerHTML="LESSON №"+(i+1);
+            block.appendChild(numBlock);
+          }
+          let learn = document.getElementsByClassName('learn');
+          learn[0].onclick=()=>{
+            block.innerHTML=learnLvl[1];
+            appendButton(block);
+            appendButton(block);
+            appendButton(block);
+          }         
+        }
+        //КВЕСТЫ
+        title[2].onclick=()=>{
+          main.innerHTML="";
+          profile();
+          let block = document.createElement('div');
+          main.appendChild(block);
+          block.className='learn';
+          for(i=0;i<10;i++){
+            let numBlock = document.createElement('div');
+            numBlock.className='learnBlock';
+            numBlock.innerHTML="QUEST №"+(i+1);
+            block.appendChild(numBlock);
+          }       
+        }
+        //Справочник слов
+        title[3].onclick=()=>{
+          main.innerHTML="";
+          profile();  
+        
+          let listBlock = document.createElement('div');
+          listBlock.className = "block list";
+          main.appendChild(listBlock);
+          let arrList =[words.noun,words.verb,words.adjective, words.mesto,words.use]; 
+          let arrListName=['Существительные','Глаголы','Прилагательные','Местоимения','Часто используемые'];
+          for(j=0;j<arrList.length;j++){
+            let nameRow = document.createElement('div');
+            nameRow.className = 'directory';
+            nameRow.innerHTML = arrListName[j];
+            listBlock.appendChild(nameRow);
+          } 
+          let listWords = document.getElementsByClassName('directory');
+          let listsBlocks = [];
+          listWords[0].onclick=()=>{
+            listBlock.innerHTML="";
+            for(i=1;i<arrList[0].length;++i){
+                let row = document.createElement('div');
+                row.className = 'directory';
+                let ru = document.createElement('span');
+                
+                ru.innerHTML =i+" : "+arrList[0][i][0];
+                
+                let en = document.createElement('span');
+                en.innerHTML =arrList[0][i][1];
+                ru.className='ru';
+                en.className='en';
+                
+                row.appendChild(ru);
+                row.appendChild(en);
+                listBlock.appendChild(row);
+            } 
+              
+          };
+          listWords[1].onclick=()=>{
+            listBlock.innerHTML="";
+            for(i=1;i<arrList[1].length;++i){
+                let row = document.createElement('div');
+                row.className = 'directory';
+                let ru = document.createElement('span');
+                
+                ru.innerHTML =i+" : "+arrList[1][i][0];
+                
+                let en = document.createElement('span');
+                en.innerHTML =arrList[1][i][1];
+                ru.className='ru';
+                en.className='en';
+                
+                row.appendChild(ru);
+                row.appendChild(en);
+                listBlock.appendChild(row);
+            } 
+              
+          };
+          listWords[2].onclick=()=>{
+            listBlock.innerHTML="";
+            for(i=1;i<arrList[2].length;++i){
+                let row = document.createElement('div');
+                row.className = 'directory';
+                let ru = document.createElement('span');
+                
+                ru.innerHTML =i+" : "+arrList[2][i][0];
+                
+                let en = document.createElement('span');
+                en.innerHTML =arrList[2][i][1];
+                ru.className='ru';
+                en.className='en';
+                
+                row.appendChild(ru);
+                row.appendChild(en);
+                listBlock.appendChild(row);
+            } 
+              
+          };
+          listWords[3].onclick=()=>{
+            listBlock.innerHTML="";
+            for(i=1;i<arrList[3].length;++i){
+                let row = document.createElement('div');
+                row.className = 'directory';
+                let ru = document.createElement('span');
+                
+                ru.innerHTML =i+" : "+arrList[3][i][0];
+                
+                let en = document.createElement('span');
+                en.innerHTML =arrList[3][i][1];
+                ru.className='ru';
+                en.className='en';
+                
+                row.appendChild(ru);
+                row.appendChild(en);
+                listBlock.appendChild(row);
+            } 
+              
+          };
+          listWords[4].onclick=()=>{
+            listBlock.innerHTML="";
+            for(i=1;i<arrList[4].length;++i){
+                let row = document.createElement('div');
+                row.className = 'directory';
+                let ru = document.createElement('span');
+                
+                ru.innerHTML =i+" : "+arrList[4][i][0];
+                
+                let en = document.createElement('span');
+                en.innerHTML =arrList[4][i][1];
+                ru.className='ru';
+                en.className='en';
+                
+                row.appendChild(ru);
+                row.appendChild(en);
+                listBlock.appendChild(row);
+            } 
+              
+          };
+        };
+        ///*********************///
+        function getRandNum(min,max){
+          return Math.floor(Math.random()*(max-min)+min);
+        }
+        ///*********************///
+      </script>
   </body>
 </html>
+

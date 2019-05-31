@@ -1,8 +1,9 @@
-/************_MAIN_************/
+/************_MAIN_******w******/
 //#1 Главная                  //#4 Спр слов ^              //#7 Доб фр ^
 //#2 Учить                    //#5 Спр фраз  ^             //#8 Уд сл
 //#3 Провести зачет           //#6  Доб сл  ^              //#9 Уд фр
 
+//const db = require('./db');
 const fs = require('fs');
 
 let pCol = document.getElementsByTagName("p");
@@ -42,14 +43,14 @@ function randNum(min,max){
 }
 
 pCol[0].onclick=()=>{
-  //ТУТ ЕБАШИМ
+  startStyle();
   let main = document.getElementById("main");
   main.innerHTML="";
   let img = document.createElement("img");
   img.src = "img/sss.jpg";
+  img.style.width="85%";
+  img.style.paddingTop="2%";
   main.appendChild(img);
-
-  //ЗАКОНЧИМ
 }
 
 function downloadPageGroup(obj){
